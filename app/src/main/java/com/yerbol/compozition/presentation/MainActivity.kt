@@ -1,7 +1,8 @@
-package com.yerbol.compozition
+package com.yerbol.compozition.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.yerbol.compozition.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
