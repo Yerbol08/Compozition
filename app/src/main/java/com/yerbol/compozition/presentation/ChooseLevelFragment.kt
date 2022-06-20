@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.yerbol.compozition.R
 import com.yerbol.compozition.databinding.FragmentChooseLevelBinding
 import com.yerbol.compozition.domain.entity.Level
 
 class ChooseLevelFragment:Fragment() {
+
     private var _binding:FragmentChooseLevelBinding? = null
     private val binding:FragmentChooseLevelBinding
     get() = _binding?:throw RuntimeException("FragmentChooseLevel == null")
@@ -41,16 +43,8 @@ class ChooseLevelFragment:Fragment() {
     }
 
     private fun launchGameFragment(level: Level){
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.container_view, GameFragment.newInstance(level))
-            .addToBackStack(GameFragment.NAME)
-            .commit()
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragment2ToGameFragment2(level))
     }
 
-    companion object{
-        const val NAME = "ChooseLevelFragment"
-        fun newInstance():ChooseLevelFragment{
-            return ChooseLevelFragment()
-        }
-    }
 }
